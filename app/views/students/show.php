@@ -1,18 +1,15 @@
 <?php 
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
-// ✅ Start session kung hindi pa naka-start
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// ✅ Redirect kung hindi naka-login
 if (!isset($_SESSION['user_id'])) {
     header("Location: " . site_url('auth/login'));
     exit;
 }
 
-// Para maiwasan notice error kung walang role
 $role = $_SESSION['role'] ?? null;
 ?>
 
@@ -21,7 +18,7 @@ $role = $_SESSION['role'] ?? null;
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Showdata</title>
+  <title>Students List</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
@@ -89,37 +86,27 @@ $role = $_SESSION['role'] ?? null;
     }
 
     .btn-warning {
-      /* Warning color changed to a light blue/white */
+      /* Yellow is changed to a lighter blue/white for warning */
       background: linear-gradient(90deg, #c5d3e8 0%, #ffffff 100%);
       color: #222; /* Black text for contrast */
     }
-    
-    .btn-warning:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 10px rgba(197, 211, 232, 0.8);
-    }
 
     .btn-danger {
-      /* Danger color is often kept red, using standard red tones */
+      /* Red is allowed as a standard 'danger' color but with a blue theme */
       background: linear-gradient(90deg, #dc3545 0%, #ff6673 100%);
       color: #fff;
     }
-    
-    .btn-danger:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 10px rgba(220, 53, 69, 0.5);
-    }
+
+    .btn-danger:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(220, 53, 69, 0.5);
+    }
 
     .btn-primary {
       /* Darker blue primary button */
       background: linear-gradient(90deg, #0056b3 0%, #007bff 100%);
       color: #fff;
     }
-    
-    .btn-primary:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 14px rgba(0, 86, 179, 0.5);
-    }
 
     .search-form {
       display: flex;
@@ -203,10 +190,29 @@ $role = $_SESSION['role'] ?? null;
     }
 
     .pagination-container a:hover {
-      /* Blue hover background for pagination links */
+      /* Blue hover background */
       background: linear-gradient(90deg, #29508d 0%, #3c77b4 100%);
       color: #fff;
       transform: scale(1.05);
+    }
+
+    /* ✅ Logout center */
+    .logout-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    /* ✅ Dark mode styles */
+    body.dark {
+      /* Darker Black/Blue gradient for dark mode */
+      background: linear-gradient(135deg, #000000 0%, #0a192f 40%, #1e3a6a 70%, #29508d 100%);
+      color: #ddd;
+    }
+
+    body.dark .container {
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 8px 24px rgba(255,255,255,0.05);
     }
 
     .dark-toggle {
@@ -221,6 +227,7 @@ $role = $_SESSION['role'] ?? null;
     .dark-toggle:hover {
       transform: scale(1.2);
     }
+
   </style>
 </head>
 
@@ -230,7 +237,7 @@ $role = $_SESSION['role'] ?? null;
       <h2>Students List</h2>
       <div style="display:flex; gap:12px; align-items:center;">
         <?php if ($role === 'admin'): ?>
-          <a href="<?= site_url('/students'); ?>" class="btn btn-success"><i class="fa fa-user-plus"></i> Add Student</a>
+          <a href="<?= site_url('/students/create'); ?>" class="btn btn-success"><i class="fa fa-user-plus"></i> Add Student</a>
         <?php endif; ?>
         <button class="dark-toggle" id="darkToggle"><i class="fa fa-moon"></i></button>
       </div>
@@ -286,17 +293,21 @@ $role = $_SESSION['role'] ?? null;
     </div>
     <?php endif; ?>
 
-    <!-- ✅ Logout button -->
-    <a href="<?=site_url('auth/logout');?>" class="btn btn-danger" style="margin-top:20px;"><i class="fa fa-sign-out"></i> Logout</a>
+    <!-- ✅ Centered Logout -->
+    <div class="logout-container">
+      <a href="<?=site_url('auth/logout');?>" class="btn btn-danger"><i class="fa fa-sign-out"></i> Logout</a>
+    </div>
   </div>
 
   <script>
     const toggle = document.getElementById("darkToggle");
     const body = document.body;
+
     if(localStorage.getItem("darkMode") === "1") {
       body.classList.add("dark");
       toggle.innerHTML = '<i class="fa fa-sun"></i>';
     }
+
     toggle.addEventListener("click", () => {
       body.classList.toggle("dark");
       const isDark = body.classList.contains("dark");

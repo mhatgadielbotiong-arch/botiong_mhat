@@ -131,8 +131,8 @@
       display: inline-block;
       margin-top: 16px;
       font-size: 0.9rem;
-      color: var(--muted);
       text-decoration: none;
+      color: var(--muted);
     }
     .back-link:hover {
       color: var(--primary);

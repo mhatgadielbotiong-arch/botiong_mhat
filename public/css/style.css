@@ -1,140 +1,239 @@
-:root{
-    --bg-card: #ffffff;
-    --accent-1: #c3cfe2;
-    --accent-2: #e3eafc;
-    --text: #222;
-    --muted: #6b7590;
-    --shadow: 0 6px 28px rgba(17,24,39,0.08);
-    --radius: 14px;
-    --gap: 16px;
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #faf7ff;
+    margin: 0;
+    padding: 0;
+    color: #6d28d9;
 }
 
-/* Layout wrapper for the table to keep widths predictable */
-.table-wrapper{
-    width: 90vw;
-    max-width: 900px;
-    margin: 0 auto 40px auto;
-    overflow: hidden;
+.create-center {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.container.create-small {
+    max-width: 340px;
+    width: 100%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 32px 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(109,40,217,0.10);
+    border: 1.5px solid #a78bfa;
+    color: #6d28d9;
+}
+
+form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #6d28d9;
+}
+
+form input[type="text"],
+form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #a78bfa;
+    border-radius: 5px;
+    transition: border 0.3s;
+    color: #6d28d9;
+    background: #faf7ff;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus {
+    border-color: #8943fa;
+    outline: none;
+}
+
+form input[type="submit"] {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #8943fa;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background: #6d28d9;
+}
+
+
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #faf7ff;
+    margin: 0;
+    padding: 0;
+    color: #6d28d9;
+}
+
+.container, .form-container, .white-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 32px 24px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 24px 0 rgba(109,40,217,0.10);
+    border: 1.5px solid #a78bfa;
+    color: #6d28d9;
+}
+
+
+form label {
+    display: block;
+    margin-top: 16px;
+    font-weight: 500;
+    color: #6d28d9;
+    font-size: 1rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form select, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 6px;
+    border: 1.5px solid #a78bfa;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #6d28d9;
+    background: #faf7ff;
+    transition: border 0.3s;
+    box-sizing: border-box;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form select:focus,
+textarea:focus {
+    border-color: #6d28d9;
+    outline: none;
+}
+
+form input[type="submit"],
+form button[type="submit"] {
+    width: 100%;
+    margin-top: 28px;
+    padding: 12px;
+    background: #6d28d9;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: 0.5px;
+}
+
+form input[type="submit"]:hover,
+form button[type="submit"]:hover {
+    background: #a78bfa;
+    color: #6d28d9;
+}
+
+h1 {
+    text-align: center;
+    color: #6d28d9;
+    font-weight: 600;
+    margin-bottom: 32px;
+    letter-spacing: 1px;
 }
 
 table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    background: var(--bg-card);
-    box-shadow: var(--shadow);
-    border-radius: var(--radius);
+    border-collapse: collapse;
+    background: transparent;
+    border-radius: 12px;
     overflow: hidden;
-    transition: box-shadow 0.18s ease;
-    border: 1px solid var(--accent-1);
-    font-size: 1rem;
+    margin-bottom: 32px;
 }
 
-h1{
-    text-align:center;
-    color:var(--text);
-    margin-bottom:24px;
-    font-size:2.4rem;
-    font-family: 'Roboto', Arial, sans-serif;
-    font-weight:700;
-    letter-spacing:1.6px;
-}
-
-th, td{
-    padding: 14px 18px;
+th, td {
+    padding: 14px 10px;
     text-align: center;
-    color: var(--text);
-    vertical-align: middle;
-    border-bottom: 1px solid var(--accent-2);
-    font-family: 'Roboto', Arial, sans-serif;
 }
 
-th{
-    background: linear-gradient(90deg, var(--accent-2) 0%, var(--accent-1) 100%);
-    color: var(--text);
-    font-weight:700;
-    letter-spacing:0.8px;
-    font-size:1rem;
-    border-bottom:2px solid var(--accent-1);
-    position: sticky;
-    top:0;
-    z-index:2;
+th {
+    background: #815af8;
+    color: #fff;
+    font-weight: 500;
+    border: none;
 }
 
-tbody tr:nth-child(even){
-    background: #f8fbff;
+tr {
+    background: #faf7ff;
+    border-bottom: 1px solid #e9d8fd;
+    transition: background 0.2s;
 }
 
-tbody tr{ 
-    transition: background 0.18s ease, box-shadow 0.18s ease;
+tr:nth-child(even) {
+    background: #f3e8ff;
 }
 
-tbody tr:hover{
-    background: var(--accent-2);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+tr:hover {
+    background: #e9d5ff;
 }
 
-tr.selected{
-    background: var(--accent-1) !important;
-    box-shadow: 0 0 0 3px rgba(195,207,226,0.15);
+.btn {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 7px 18px;
+    border-radius: 6px;
+    margin: 0 2px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    border: none;
+    outline: none;
 }
 
-.sort-arrow{
-    display:inline-block;
-    margin-left:8px;
-    width:0; height:0;
-    border-left:6px solid transparent;
-    border-right:6px solid transparent;
-    border-top:8px solid var(--text);
-    vertical-align:middle;
-    transition: transform 0.18s ease;
+.btn.update {
+    background: #fff;
+    color: #0d0d0d;
+    border: 1.5px solid #a78bfa;
 }
-.sort-arrow.desc{ transform: rotate(180deg); }
-
-/* rounded corners on the table cells */
-thead tr th:first-child{ border-top-left-radius: var(--radius); }
-thead tr th:last-child{ border-top-right-radius: var(--radius); }
-tbody tr:last-child td:first-child{ border-bottom-left-radius: var(--radius); }
-tbody tr:last-child td:last-child{ border-bottom-right-radius: var(--radius); }
-
-/* simple tooltip using title attr but with better positioning */
-td[title], th[title]{ position: relative; }
-td[title]:hover::after, th[title]:hover::after{
-    content: attr(title);
-    position: absolute;
-    left:50%; bottom:120%; transform:translateX(-50%);
-    background: rgba(34,34,34,0.95); color:#fff; padding:6px 12px; border-radius:6px;
-    white-space:nowrap; font-size:0.9rem; box-shadow:0 6px 18px rgba(0,0,0,0.12); z-index:10;
+.btn.update:hover {
+    background: #6d28d9;
+    color: #ffffff;
 }
 
-/* Buttons / links */
-a{
-    text-decoration:none; font-size:0.95rem; margin:0 6px; padding:8px 14px; border-radius:8px;
-    transition: all 0.18s ease; box-shadow: 0 6px 18px rgba(0,0,0,0.06); font-weight:600; display:inline-block;
-    background: linear-gradient(90deg,var(--accent-1) 0%, #f5f7fa 100%); color:var(--text); border:1px solid var(--accent-1);
+.btn.delete {
+    background: #fff;
+    color: #6d28d9;
+    border: 1.5px solid #a78bfa;
+}
+.btn.delete:hover {
+    background: #a78bfa;
+    color: #0d0d0d;
 }
 
-a.update{ background: linear-gradient(90deg,#f5f7fa 60%, var(--accent-1) 100%); }
-a.delete{ background: linear-gradient(90deg,var(--accent-1) 60%, #f5f7fa 100%); }
-
-a:hover{ box-shadow:0 10px 30px rgba(0,0,0,0.08); transform: translateY(-2px); }
-
-/* Button container replaces awkward centering hacks */
-.button-container{
-    width:90vw; max-width:900px; margin:32px auto; text-align:right; box-sizing:border-box;
+.btn.create {
+    background: #6d28d9;
+    color: #fff;
+    font-weight: 600;
+    margin: 0 auto;
+    display: block;
+    width: max-content;
+    margin-top: 24px;
+    box-shadow: 0 1px 6px 0 rgba(167,139,250,0.08);
 }
-.create-btn{
-    display:inline-block; padding:12px 24px; background: linear-gradient(90deg,var(--accent-1) 0%, #f5f7fa 100%);
-    color:var(--text); font-weight:700; border-radius:10px; border:1px solid var(--accent-1); cursor:pointer;
+.btn.create:hover {
+    background: #7828f9;
+    color: #f9f9fa;
 }
-.create-btn:hover{ box-shadow:0 12px 36px rgba(195,207,226,0.18); }
-
-/* Responsive tweaks */
-@media (max-width:700px){
-    :root{ --gap: 12px; }
-    .table-wrapper{ width:98vw; max-width:98vw; }
-    th, td{ padding:10px 8px; font-size:0.98rem; }
-    .create-btn{ padding:10px 16px; font-size:0.98rem; }
-    h1{ font-size:1.8rem; }
-}
-   
