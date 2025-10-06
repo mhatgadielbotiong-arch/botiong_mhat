@@ -1,135 +1,31 @@
-/*
- * DARK MODE REVERT (Applying the aesthetic of Code 1 to the structure of Code 2)
- */
-
-body {
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-    /* Reverted to Dark Blue Gradient from Code 1 */
-    background: linear-gradient(135deg, #1f2837 0%, #0d121c 100%);
-    margin: 0;
-    padding: 32px;
-    min-height: 100vh;
-    color: #aebecd; /* Light grey/blue text for dark theme */
+:root{
+    --bg-100: #0d121c;
+    --bg-90: #1b2430;
+    --card: #121820;
+    --muted: #aebecd;
+    --accent: #ffc107;
+    --accent-2: #ff8c00;
+    --input-bg: #252e3b;
+    --input-border: #3d4a5d;
+    --radius: 12px;
 }
 
-/* --- Heading Modification --- */
-h1 {
-    text-align: center;
-    color: #f7f9fb; /* Bright text for contrast */
-    margin-bottom: 40px;
-    font-size: 2.8rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow from Code 1 */
-}
+body{ font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg,var(--bg-90) 0%, var(--bg-100) 100%); margin:0; padding:28px; min-height:100vh; color:var(--muted); }
 
-/* --- Form Container Modification (Dark Card) --- */
-.form-container {
-    max-width: 440px;
-    width: 100%;
-    margin: 0 auto;
-    background: #1a232f; /* Dark, subtle background for the card */
-    padding: 36px 32px;
-    border-radius: 20px; /* Kept rounded but slightly less than Neumorphism */
-    /* Replaced Neumorphism shadow with a deep, floating dark shadow from Code 1 */
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Light, subtle border */
-}
+h1{ text-align:center; color:#f7f9fb; margin-bottom:28px; font-size:2.4rem; font-weight:800; letter-spacing:1.6px; }
 
-/* --- Label Modification --- */
-label {
-    display: block;
-    margin-top: 22px;
-    font-weight: 600;
-    color: #aebecd; /* Light grey/blue label color */
-    font-size: 0.95rem;
-    letter-spacing: 0.8px; /* Increased spacing from Code 1 */
-    text-transform: uppercase;
-}
+.form-container{ max-width:440px; width:100%; margin:0 auto; background:var(--card); padding:28px; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,0.45); border:1px solid rgba(255,255,255,0.03); }
 
-/* --- Input Field Modification (Dark Inset) --- */
-input[type="text"],
-input[type="email"],
-select {
-    width: 100%;
-    padding: 15px 16px; /* Increased padding slightly */
-    margin-top: 10px;
-    border: 1px solid #3d4a5d; /* Dark border */
-    border-radius: 10px;
-    font-size: 1rem;
-    background: #252e3b; /* Darker input background */
-    color: #f7f9fb; /* Bright text inside inputs */
-    /* Removed Neumorphism shadows, relying on border and background */
-    box-shadow: none;
-    transition: border 0.3s, box-shadow 0.3s, background 0.3s;
-}
+label{ display:block; margin-top:16px; font-weight:600; color:var(--muted); font-size:0.95rem; letter-spacing:0.6px; text-transform:uppercase; }
 
-/* --- Input Focus Modification (Accent Glow) --- */
-input[type="text"]:focus,
-input[type="email"]:focus,
-select:focus {
-    outline: none;
-    /* Accent color: vibrant orange/gold from Code 1 */
-    border-color: #ffc107; 
-    /* Soft gold glow on focus */
-    box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.3); 
-    background: #2c3847; /* Slight change in background on focus */
-}
+input[type="text"], input[type="email"], select{ width:100%; padding:12px 14px; margin-top:8px; border:1px solid var(--input-border); border-radius:10px; background:var(--input-bg); color:#f7f9fb; box-shadow:none; transition: border-color 0.18s ease, box-shadow 0.18s ease; }
 
-/* --- Submit Button Modification (Gold Gradient) --- */
-input[type="submit"] {
-    width: 100%;
-    margin-top: 40px;
-    padding: 18px; /* Larger button padding from Code 1 */
-    /* Bold, high-contrast gold/orange gradient from Code 1 */
-    background: linear-gradient(90deg, #ffc107 0%, #ff8c00 100%);
-    border: none;
-    border-radius: 12px;
-    color: #1a232f; /* Dark text on bright button for high contrast */
-    font-size: 1.2rem;
-    font-weight: 900;
-    cursor: pointer;
-    /* Stronger, gold-tinted shadow from Code 1 */
-    box-shadow: 0 10px 30px rgba(255, 140, 0, 0.4);
-    letter-spacing: 1px;
-    transition: background 0.3s, box-shadow 0.3s, transform 0.15s;
-}
+input[type="text"]:focus, input[type="email"]:focus, select:focus{ outline:none; border-color:var(--accent); box-shadow: 0 0 0 6px rgba(255,193,7,0.12); background:#2c3847; }
 
-input[type="submit"]:hover {
-    /* Subtle change in gradient direction on hover */
-    background: linear-gradient(90deg, #ff8c00 0%, #ffc107 100%);
-    box-shadow: 0 12px 40px rgba(255, 140, 0, 0.5);
-    transform: translateY(-2px); /* More noticeable lift effect from Code 1 */
-}
+input[type="submit"]{ width:100%; margin-top:28px; padding:14px; border-radius:10px; border:none; background:linear-gradient(90deg,var(--accent) 0%, var(--accent-2) 100%); color:#111827; font-weight:800; font-size:1.05rem; cursor:pointer; box-shadow: 0 10px 30px rgba(255,140,0,0.3); transition: transform 0.12s ease, box-shadow 0.18s ease; }
+input[type="submit"]:hover{ transform: translateY(-2px); box-shadow:0 14px 40px rgba(255,140,0,0.36); }
 
-/* --- Back Link Modification --- */
-.back-link {
-    display: block;
-    text-align: center;
-    margin-top: 30px;
-    color: #ffc107; /* Match accent color */
-    text-decoration: none;
-    font-size: 1.05rem;
-    font-weight: 600;
-    transition: color 0.2s;
-}
+.back-link{ display:block; text-align:center; margin-top:18px; color:var(--accent); text-decoration:none; font-size:1.05rem; font-weight:600; }
+.back-link:hover{ color:var(--accent-2); text-decoration:underline; }
 
-.back-link:hover {
-    text-decoration: underline;
-    color: #ff9800; /* Darker gold/orange on hover */
-}
-
-/* --- Media Queries (Preserved from Code 2) --- */
-@media (max-width: 480px) {
-    body {
-        padding: 15px;
-    }
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 25px;
-    }
-    .form-container {
-        padding: 20px;
-        border-radius: 15px;
-    }
-}
+@media (max-width:480px){ body{ padding:14px; } h1{ font-size:1.9rem; } .form-container{ padding:18px; border-radius:12px; } }

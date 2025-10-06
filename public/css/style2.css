@@ -1,111 +1,48 @@
-body {
+:root{
+    --bg-100: #0d121c;
+    --bg-90: #1b2430;
+    --card: #121820;
+    --muted: #aebecd;
+    --accent: #ffc107; /* gold */
+    --accent-2: #ff8c00;
+    --input-bg: #252e3b;
+    --input-border: #3d4a5d;
+    --radius: 12px;
+}
+
+body{
     font-family: 'Segoe UI', Arial, sans-serif;
-    /* New dark blue gradient background */
-    background: linear-gradient(135deg, #1f2837 0%, #0d121c 100%);
-    margin: 0;
-    padding: 40px;
-    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-90) 0%, var(--bg-100) 100%);
+    margin:0; padding:36px; min-height:100vh; color:var(--muted);
 }
 
-/* --- Heading Modification --- */
-h1 {
-    text-align: center;
-    color: #f7f9fb; /* Bright text for contrast */
-    margin-bottom: 40px;
-    font-size: 2.6rem; /* Slightly larger */
-    letter-spacing: 2px; /* Increased letter-spacing for elegance */
-    font-weight: 700;
-    /* Subtle text shadow for depth */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+h1{ text-align:center; color:#f7f9fb; margin-bottom:32px; font-size:2.4rem; letter-spacing:1.6px; font-weight:700; }
+
+.form-container{
+    width:100%; max-width:420px; margin:0 auto; background:var(--card); padding:28px; border-radius:var(--radius);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.03);
 }
 
-/* --- Form Container Modification (Dark Card) --- */
-.form-container {
-    width: 420px; /* Slightly wider */
-    margin: 0 auto;
-    background: #1a232f; /* Dark, subtle background for the form card */
-    padding: 40px; /* Increased padding */
-    border-radius: 20px; /* More rounded */
-    /* Pronounced, deep shadow for a floating effect */
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Light, subtle border */
+label{ display:block; margin-top:18px; font-weight:600; color:var(--muted); letter-spacing:0.6px; text-transform:uppercase; font-size:0.85rem; }
+
+input[type="text"], input[type="email"]{
+    width:100%; padding:12px 14px; margin-top:8px; border-radius:10px; border:1px solid var(--input-border);
+    background:var(--input-bg); color:#f7f9fb; font-size:1rem; transition: box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
 }
 
-/* --- Label Modification --- */
-label {
-    display: block;
-    margin-top: 24px; /* More space between fields */
-    font-weight: 600;
-    color: #aebecd; /* Light grey/blue label color */
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    font-size: 0.85rem; /* Slightly smaller for hierarchy */
+input[type="text"]:focus, input[type="email"]:focus{
+    outline:none; border-color:var(--accent); box-shadow: 0 0 0 6px rgba(255,193,7,0.12); background:#2c3847;
 }
 
-/* --- Input Field Modification --- */
-input[type="text"],
-input[type="email"] {
-    width: 100%;
-    padding: 15px; /* More padding */
-    margin-top: 10px;
-    border: 1px solid #3d4a5d; /* Dark border for input box */
-    border-radius: 10px;
-    transition: border 0.3s, box-shadow 0.3s, background 0.3s;
-    font-size: 1.05rem;
-    background: #252e3b; /* Darker input background */
-    color: #f7f9fb; /* Bright text inside inputs */
+input[type="submit"]{
+    width:100%; margin-top:28px; padding:14px; border-radius:10px; border:none; cursor:pointer;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%); color:#111827; font-weight:800; font-size:1.05rem;
+    box-shadow: 0 10px 30px rgba(255,140,0,0.28); transition: transform 0.15s ease, box-shadow 0.18s ease;
 }
+input[type="submit"]:hover{ transform: translateY(-2px); box-shadow: 0 14px 40px rgba(255,140,0,0.36); }
 
-/* --- Input Focus Modification --- */
-input[type="text"]:focus,
-input[type="email"]:focus {
-    /* Accent color: vibrant orange/gold */
-    border-color: #ffc107; 
-    outline: none;
-    /* Soft gold glow on focus */
-    box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.3); 
-    background: #2c3847; /* Slight change in background on focus */
-}
+.back-link{ display:block; text-align:center; margin-top:18px; color:var(--accent); text-decoration:none; font-weight:600; }
+.back-link:hover{ color:var(--accent-2); text-decoration:underline; }
 
-/* --- Submit Button Modification --- */
-input[type="submit"] {
-    width: 100%;
-    margin-top: 40px; 
-    padding: 18px; /* Larger button */
-    /* Bold, high-contrast gold/orange gradient */
-    background: linear-gradient(90deg, #ffc107 0%, #ff8c00 100%);
-    border: none;
-    border-radius: 12px;
-    color: #1a232f; /* Dark text on bright button for high contrast */
-    font-size: 1.2rem;
-    font-weight: 900; /* Extra bold text */
-    cursor: pointer;
-    /* Stronger, gold-tinted shadow */
-    box-shadow: 0 10px 30px rgba(255, 140, 0, 0.4);
-    letter-spacing: 1px;
-    transition: background 0.3s, box-shadow 0.3s, transform 0.15s;
-}
-
-input[type="submit"]:hover {
-    /* Subtle change in gradient direction on hover */
-    background: linear-gradient(90deg, #ff8c00 0%, #ffc107 100%);
-    box-shadow: 0 12px 40px rgba(255, 140, 0, 0.5);
-    transform: translateY(-2px); /* More noticeable lift effect */
-}
-
-/* --- Back Link Modification --- */
-.back-link {
-    display: block;
-    text-align: center;
-    margin-top: 30px;
-    color: #ffc107; /* Match accent color */
-    text-decoration: none;
-    font-size: 1.05rem;
-    font-weight: 600;
-    transition: color 0.2s;
-}
-
-.back-link:hover {
-    text-decoration: underline;
-    color: #ff9800; /* Darker gold/orange on hover */
-}
+@media (max-width:480px){ body{ padding:18px; } .form-container{ padding:18px; border-radius:10px; } h1{ font-size:1.8rem; } }
