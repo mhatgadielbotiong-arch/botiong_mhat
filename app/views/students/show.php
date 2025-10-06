@@ -21,214 +21,243 @@ $role = $_SESSION['role'] ?? null;
   <title>Students List</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <style>
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      /* New Black/Blue Gradient Background */
-      background: linear-gradient(135deg, #0a192f 0%, #1e3a6a 40%, #29508d 70%, #3c77b4 100%);
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      min-height: 100vh;
-      color: #fff;
-      transition: all 0.4s ease;
-    }
+ <style>
+    /* 🎨 THEME COLORS */
+    :root {
+        --primary-orange: #ff8c00;
+        --secondary-orange: #ff6600;
+        --dark-bg: #0d0d0d;
+        --dark-card: rgba(26, 26, 26, 0.75);
+        --white-text: #eeeeee;
+        --black-text: #0d0d0d;
+    }
 
-    .container {
-      max-width: 1100px;
-      margin: 40px auto;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-      padding: 32px;
-      backdrop-filter: blur(10px);
-      transition: all 0.4s ease;
-    }
+    /* BODY & BACKGROUND */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      /* Dark Background Gradient */
+      background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a1a 40%, #252525 70%, #333333 100%);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      color: var(--white-text);
+      transition: all 0.4s ease;
+    }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 24px;
-    }
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      /* Dark Translucent Card */
+      background: var(--dark-card); 
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.7); /* Darker Shadow */
+      padding: 32px;
+      backdrop-filter: blur(10px);
+      transition: all 0.4s ease;
+    }
 
-    h2 {
-      margin: 0;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #fff;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
 
-    .btn {
-      display: inline-block;
-      padding: 8px 18px;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
+    h2 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary-orange); /* Orange Heading */
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
 
-    .btn-success {
-      /* Blue success button */
-      background: linear-gradient(90deg, #007bff 0%, #3399ff 100%);
-      color: #fff;
-    }
+    /* BUTTON BASE STYLES */
+    .btn {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
 
-    .btn-success:hover {
-      transform: scale(1.05);
-      /* Blue shadow on hover */
-      box-shadow: 0 4px 14px rgba(0, 123, 255, 0.5);
-    }
+    /* BUTTON: SUCCESS (Primary Action) */
+    .btn-success {
+      background: linear-gradient(90deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
+      color: var(--black-text); /* Black text on Orange button */
+    }
 
-    .btn-warning {
-      /* Yellow is changed to a lighter blue/white for warning */
-      background: linear-gradient(90deg, #c5d3e8 0%, #ffffff 100%);
-      color: #222; /* Black text for contrast */
-    }
+    .btn-success:hover {
+      transform: scale(1.05);
+      /* Orange Hover Shadow */
+      box-shadow: 0 4px 14px rgba(255, 140, 0, 0.7); 
+    }
 
-    .btn-danger {
-      /* Red is allowed as a standard 'danger' color but with a blue theme */
-      background: linear-gradient(90deg, #dc3545 0%, #ff6673 100%);
-      color: #fff;
-    }
+    /* BUTTON: WARNING (Secondary Action) */
+    .btn-warning {
+      background: linear-gradient(90deg, #fbb03b 0%, #ffc107 100%); /* Yellowish-Orange Warning */
+      color: var(--black-text);
+    }
+    
+    .btn-warning:hover {
+       transform: scale(1.05);
+       box-shadow: 0 4px 10px rgba(255, 193, 7, 0.5);
+    }
 
-    .btn-danger:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(220, 53, 69, 0.5);
-    }
+    /* BUTTON: DANGER (Destructive Action) */
+    .btn-danger {
+      background: linear-gradient(90deg, #dc3545 0%, #f44336 100%); /* Red */
+      color: var(--white-text);
+    }
 
-    .btn-primary {
-      /* Darker blue primary button */
-      background: linear-gradient(90deg, #0056b3 0%, #007bff 100%);
-      color: #fff;
-    }
+    .btn-danger:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(220, 53, 69, 0.5);
+    }
 
-    .search-form {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
+    /* BUTTON: PRIMARY (Fallback/Info) */
+    .btn-primary {
+      background: linear-gradient(90deg, #495057 0%, #6c757d 100%); /* Gray/Black */
+      color: var(--white-text);
+    }
 
-    .search-form input {
-      padding: 10px 14px;
-      border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.4);
-      font-size: 1rem;
-      flex: 1;
-      background: rgba(255,255,255,0.15);
-      color: #fff;
-    }
+    /* SEARCH INPUTS */
+    .search-form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
 
-    .card {
-      overflow-x: auto;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.08);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    }
+    .search-form input {
+      padding: 10px 14px;
+      border-radius: 6px;
+      /* Orange border on input */
+      border: 1px solid rgba(255, 140, 0, 0.4); 
+      font-size: 1rem;
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      color: var(--white-text);
+    }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      color: #fff;
-    }
+    .search-form input:focus {
+        border-color: var(--primary-orange);
+        box-shadow: 0 0 5px var(--primary-orange);
+        outline: none;
+    }
 
-    th, td {
-      padding: 12px 16px;
-      text-align: left;
-      font-size: 1rem;
-    }
+    /* TABLE STYLES */
+    .card {
+      overflow-x: auto;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
 
-    th {
-      background: rgba(0,0,0,0.3);
-      font-weight: 700;
-      text-transform: uppercase;
-    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: var(--white-text);
+    }
 
-    tr:hover td {
-      background: rgba(255,255,255,0.08);
-    }
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 1rem;
+    }
 
-    .actions {
-      display: flex;
-      gap: 8px;
-    }
+    th {
+      background: rgba(255, 140, 0, 0.2); /* Light Orange Header Background */
+      font-weight: 700;
+      text-transform: uppercase;
+    }
 
-    .pagination-container {
-      margin-top: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    tr:hover td {
+      background: rgba(255, 140, 0, 0.05); /* Very light orange tint on hover */
+    }
 
-    .pagination-container ul {
-      list-style: none;
-      display: flex;
-      gap: 6px;
-      padding: 0;
-      margin: 0;
-    }
+    .actions {
+      display: flex;
+      gap: 8px;
+    }
 
-    .pagination-container a,
-    .pagination-container strong {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      background: rgba(255,255,255,0.15);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.25);
-      transition: all 0.3s ease;
-    }
+    /* PAGINATION */
+    .pagination-container {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-    .pagination-container a:hover {
-      /* Blue hover background */
-      background: linear-gradient(90deg, #29508d 0%, #3c77b4 100%);
-      color: #fff;
-      transform: scale(1.05);
-    }
+    .pagination-container ul {
+      list-style: none;
+      display: flex;
+      gap: 6px;
+      padding: 0;
+      margin: 0;
+    }
 
-    /* ✅ Logout center */
-    .logout-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 30px;
-    }
+    .pagination-container a,
+    .pagination-container strong {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      background: rgba(255,255,255,0.1);
+      color: var(--white-text);
+      border: 1px solid rgba(255, 140, 0, 0.2); /* Orange border */
+      transition: all 0.3s ease;
+    }
 
-    /* ✅ Dark mode styles */
-    body.dark {
-      /* Darker Black/Blue gradient for dark mode */
-      background: linear-gradient(135deg, #000000 0%, #0a192f 40%, #1e3a6a 70%, #29508d 100%);
-      color: #ddd;
-    }
+    /* Active/Hover Page */
+    .pagination-container strong,
+    .pagination-container a:hover {
+      background: linear-gradient(90deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
+      color: var(--black-text);
+      transform: scale(1.05);
+      border-color: var(--primary-orange);
+    }
 
-    body.dark .container {
-      background: rgba(0, 0, 0, 0.5);
-      box-shadow: 0 8px 24px rgba(255,255,255,0.05);
-    }
+    /* LOGOUT */
+    .logout-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
 
-    .dark-toggle {
-      background: transparent;
-      border: none;
-      font-size: 1.4rem;
-      color: #fff;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
+    /* DARK MODE TOGGLE (Color stays white/orange for contrast) */
+    .dark-toggle {
+      background: transparent;
+      border: none;
+      font-size: 1.4rem;
+      color: var(--primary-orange); /* Orange toggle icon */
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-    .dark-toggle:hover {
-      transform: scale(1.2);
-    }
+    .dark-toggle:hover {
+      transform: scale(1.2);
+    }
+    
+    /* DARK MODE BODY STYLES (Adjustments for dark mode class) */
+    body.dark {
+      background: linear-gradient(135deg, #0a0a0a 0%, #111111 40%, #1c1c1c 70%, #292929 100%);
+      color: #ddd;
+    }
 
-  </style>
+    body.dark .container {
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 8px 24px rgba(255,255,255,0.05);
+    }
+ </style>
 </head>
 
 <body>
